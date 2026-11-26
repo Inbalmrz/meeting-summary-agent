@@ -10,8 +10,11 @@
 |---|---|
 | [`SPEC.md`](SPEC.md) | רקע, בחירת הסוכן, הגדרת התפקיד, ארכיטקטורה, כלים, זיכרון, הנחיות ובניית הסוכן ב-Claude Platform |
 | [`Architecture.md`](Architecture.md) | תרשים המערכת וזרימת המידע, טריגרים, פלט, בסיס נתונים ודשבורד |
+| [`Agent-Config.md`](Agent-Config.md) | **קונפיגורציית הסוכן:** מודל, רמת מאמץ, כלים, הנחיות (פרומפט), סביבה, כספת וזיכרון |
+| [`Build-Guide.md`](Build-Guide.md) | **מדריך בנייה מלא:** התקנת ה-CLI, בניית הסוכן ב-Claude Platform, הרשאות, זיכרון, Fireflies, Make וריצת ניסיון |
+| [`agents/meeting-summarizer/`](agents/meeting-summarizer/) | קבצי הסוכן שנבנים עם `ant apply`: הגדרה, סביבה, כספת, זיכרון והסקיל "סיכום-פגישה" |
+| [`make/scenarios.md`](make/scenarios.md) | תרחישי Make S1–S4 וגופי הבקשות ל-Claude Platform |
 | [`standard-book/`](standard-book/) | הוראות לפרויקט "ספר הסטנדרט" ב-Claude, שבונה את תבנית הסיכום |
-| [`skill/meeting-summary/`](skill/meeting-summary/) | הסקיל "סיכום-פגישה" (תנאי מקדים לסוכן) |
 | [`examples/`](examples/) | תמליל דמו בדוי ותוצאת הרצת הסקיל עליו |
 
 </div>

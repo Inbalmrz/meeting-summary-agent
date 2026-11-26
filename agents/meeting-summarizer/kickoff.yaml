@@ -1,0 +1,21 @@
+# Example first message for a MANUAL rehearsal session (fill in real IDs).
+# In production, Make builds the same block automatically (see make/scenarios.md, S1).
+events:
+  - type: user.message
+    content:
+      - type: text
+        text: |
+          airtable_base_id: appXXXXXXXXXXXXXX
+          transcripts_table_id: tblXXXXXXXXXXXXXX
+          tasks_table_id: tblXXXXXXXXXXXXXX
+          transcript_record_id: recXXXXXXXXXXXXXX
+          transcript_file_id: DRIVE_FILE_ID_OF_THE_TRANSCRIPT
+          summaries_folder_id: DRIVE_FOLDER_ID_OF_PROJECT_SUMMARIES
+          client_slug: demo-client
+          project_name: Demo Project
+          meeting_topic: ועדת היגוי
+          meeting_type: ועדת היגוי
+          meeting_date: 2026-11-24
+          attendees: Dana Cohen (client CEO); Ron Levi (vendor PM)
+          client_contacts: Dana Cohen <dana@example.com>
+          manager_name: Project Manager
