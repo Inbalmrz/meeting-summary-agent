@@ -100,15 +100,10 @@
 
 ---
 
-## 3. הערה לגבי קבצי הריפו
+## 3. הקבצים בריפו
 
-הכלל נוסף **ב-Console בלבד** (גרסה 3 של הסוכן). הקבצים הקיימים בריפו לא שונו, כך שהם עדיין מתארים את גרסה 2:
+הכלל נוסף לסוכן ב-Console (גרסה 4), ומאז **הקבצים בריפו עודכנו להתאים**: [agents/meeting-summarizer/agent.md](agents/meeting-summarizer/agent.md), [console/agent-raw.yaml](console/agent-raw.yaml) ו-[Agent-Config.md](Agent-Config.md). הגרסה הקודמת של המסמך הזה, שציינה שהקבצים עדיין מתארים גרסה 2, נשמרה ב-[versions/Retry-Policy-v1.md](versions/Retry-Policy-v1.md).
 
-- [`agents/meeting-summarizer/agent.md`](agents/meeting-summarizer/agent.md)
-- [`console/agent-raw.yaml`](console/agent-raw.yaml)
-- [Agent-Config.md](Agent-Config.md)
-- [make/scenarios.md](make/scenarios.md)
-
-המקור המחייב להנחיות הוא הסוכן ב-Console. כדי שהריפו יתאים, יש להעתיק אליהם את הסעיף שבפרק 1.
+המקור המחייב להנחיות נשאר הסוכן ב-Console.
 
 </div>

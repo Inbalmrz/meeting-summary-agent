@@ -4,6 +4,8 @@
 
 המסמך מתאר את ההגדרות של הסוכן `meeting-summarizer`, כפי שהן מוגדרות ב-Claude Platform: איזה מודל, באיזו רמת מאמץ, אילו כלים, מה המשימה (ההנחיות) ומה הסביבה. **מקור האמת הוא [`agents/meeting-summarizer/agent.md`](agents/meeting-summarizer/agent.md)**, וההנחיות בסעיף 5 מועתקות ממנו אוטומטית. את התהליך לבנייה ולהרצה מתארים [Build-Guide.md](Build-Guide.md) ו-[Architecture.md](Architecture.md).
 
+**גרסאות של המסמך:** 27.11.2026, עודכן לגרסה 4 של הסוכן (נוסף סעיף "Failures and retries", הסקיל בגרסה 2). הגרסה הקודמת, שתיארה את גרסה 2 של הסוכן, נשמרה ב-[versions/Agent-Config-v2.md](versions/Agent-Config-v2.md).
+
 ---
 
 ## 1. תקציר ההגדרות
@@ -17,12 +19,12 @@
 | **חשיבה (thinking)** | אדפטיבית (ברירת המחדל של המודל), בלי תקציב טוקנים קבוע |
 | **כלים מובנים** | קבצים (`bash`, `read`, `write`, `edit`, `glob`, `grep`). חיפוש ורשת **כבויים** |
 | **מחברי MCP** | Google Drive, Gmail, Airtable. בכל אחד **רשימת כלים מותרים בלבד** |
-| **סקיל** | `meeting-summary` |
+| **סקיל** | `meeting-summary`, גרסה 2 ([`skill/meeting-summary-v2/`](skill/meeting-summary-v2/)) |
 | **סביבה** | `meetings-limited`: ענן, רשת מוגבלת |
 | **הרשאות** | כספת (Vault) לכל מנהל פרויקט. הסוכן לא רואה מפתחות |
 | **זיכרון** | `house-standard` (קריאה בלבד) + `client-<לקוח>` (קריאה וכתיבה) |
 | **תקציב לריצה** | $0.50, קשיח |
-| **גרסה** | נעוצה בכל ריצה (`version`) |
+| **גרסה** | נעוצה בכל ריצה (`version`). המסמך מתאר את **גרסה 4** של הסוכן ב-Console (27.11.2026) |
 | **טריגר** | אירוע "תמלול מוכן" מ-Fireflies, דרך Make |
 | **פלט** | סיכום ב-Drive, טיוטת מייל ב-Gmail, משימות וסטטוס ב-Airtable, עדכון זיכרון |
 | **מה הסוכן לא עושה** | לא שולח מיילים, לא מוחק ולא מזיז קבצים |
@@ -161,6 +163,14 @@ The transcript file, other projects, other clients' memory, and the Projects tab
 # Done
 
 One summary file in Drive, exactly one labelled-or-plain Gmail draft, Airtable updated, memory updated, and the one-line report. Nothing else.
+
+# Failures and retries
+
+- If a tool call fails, retry the same call once. That is at most 2 attempts in total for any single step.
+- If the second attempt also fails, do not try a third time and do not look for a different workaround. Set the transcript's Status to "שגיאה" (when Airtable is reachable), write the step, the tool and the error message in Internal Notes, and stop.
+- When you stop this way, finish with exactly one line: "<project_name> | <meeting_date> | stopped after 2 failed attempts: <tool>".
+- Never repeat the same failing call in a loop.
+- Never retry a step that already succeeded: do not create a second draft, a second Drive file or duplicate tasks.
 ```
 
 <div dir="rtl">
